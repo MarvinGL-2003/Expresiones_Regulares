@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Expresiones Regulares</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1>Validador de Expresiones Regulares</h1>
+            <p>Prueba y valida patrones de texto fácilmente</p>
+        </header>
+        
+        <main>
+            <section class="instrucciones">
+                <h2>¿Cómo usar?</h2>
+                <ol>
+                    <li>Escribe un patrón regex o elige un ejemplo</li>
+                    <li>Ajusta las banderas según necesites</li>
+                    <li>Ingresa texto para validar en el cuadro inferior</li>
+                    <li>Haz clic en "Probar Ahora" para ver los resultados</li>
+                </ol>
+            </section>
+            
+            <section class="panel-principal">
+                <div class="entrada">
+                    <div class="campo">
+                        <label for="patron">Patrón Regex:</label>
+                        <input type="text" id="patron" placeholder="Ej: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    </div>
+                    
+                    <div class="banderas">
+                        <div class="tooltip">
+                            <label class="checkbox">
+                                <input type="checkbox" id="global"> Global (g)
+                            </label>
+                            <span class="tooltiptext">Busca todas las coincidencias, no solo la primera</span>
+                        </div>
+                        <div class="tooltip">
+                            <label class="checkbox">
+                                <input type="checkbox" id="ignoreCase"> Ignorar Mayús. (i)
+                            </label>
+                            <span class="tooltiptext">No distingue entre mayúsculas y minúsculas</span>
+                        </div>
+                        <div class="tooltip">
+                            <label class="checkbox">
+                                <input type="checkbox" id="multiline"> Multilínea (m)
+                            </label>
+                            <span class="tooltiptext">Busca en múltiples líneas individualmente</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="entrada">
+                    <label for="texto">Texto a validar:</label>
+                    <textarea id="texto" rows="4" placeholder="Ingresa el texto que quieres probar con el patrón regex"></textarea>
+                </div>
+                
+                <div class="controles">
+                    <button id="btnProbar" class="btn-primario">Probar Ahora</button>
+                    <button id="btnLimpiar" class="btn-secundario">Limpiar Todo</button>
+                </div>
+            </section>
+            
+            <section class="resultados">
+                <h2>Resultados</h2>
+                <div id="resultado" class="caja-resultado">
+                    <div class="inicio">Los resultados se mostrarán aquí. Las coincidencias se resaltarán en verde.</div>
+                </div>
+            </section>
+            
+            <section class="ejemplos">
+                <h2>Ejemplos Predefinidos</h2>
+                <p class="subtitulo">Haz clic en cualquier ejemplo para probarlo inmediatamente</p>
+                
+                <div class="grid-ejemplos">
+                    <div class="ejemplo">
+                        <h3>🔄 Validar Email</h3>
+                        <div class="patron">[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}</div>
+                        <p class="descripcion">Valida direcciones de correo electrónico estándar</p>
+                        <button class="btn-ejemplo" data-tipo="email" data-ejemplo="usuario@example.com, contacto@empresa.org, invalido.com">Probar Email</button>
+                    </div>
+                    
+                    <div class="ejemplo">
+                        <h3>📞 Validar Teléfono</h3>
+                        <div class="patron">\(\d{2}\)\d{4}-\d{4}|\(\d{2}\)\d{2}\s\d{2}\s\d{2}\s\d{2}|\(\d{3}\)\d{3}[\*\.\-]\d{3}</div>
+                        <p class="descripcion">Valida números de teléfono en diferentes formatos</p>
+                        <button class="btn-ejemplo" data-tipo="telefono" data-ejemplo="(55)5544-3322 o (55)55 44 33 22 o (555)444*333">Probar Teléfono</button>
+                    </div>
+                    
+                    <div class="ejemplo">
+                        <h3>🔗 Buscar URLs</h3>
+                        <div class="patron">https?:\/\/[^\s/$.?#].[^\s]*</div>
+                        <p class="descripcion">Encuentra URLs HTTP y HTTPS en texto</p>
+                        <button class="btn-ejemplo" data-tipo="url" data-ejemplo="Visita https://www.ejemplo.com y http://sitio.org/pagina para más información">Probar URLs</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
